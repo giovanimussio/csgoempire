@@ -1,1 +1,1 @@
-# csgoempire
+# csgoempire-automation

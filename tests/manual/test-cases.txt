@@ -1,0 +1,40 @@
+- Default state
+ - Sound ON
+ - Placeholder in the bet field
+ - all buttons displayed
+ - Players Ranking
+ - chat open
+ - last 100 roulete results
+
+-  Bet field and buttons
+  - clear should clear the bet field(with/without bet)
+  - click max loggedin/not loggedin
+  - Add bet 
+  - Click 1/2 and x2
+
+- chat
+ - open/close chat
+ - send a message
+ - should be possible to change rooms 
+
+- Roullete
+ - Animation
+ - timeout
+ - should display the winning bet in the end of each roullete roll
+
+- Bet ranking for each bet
+ - Present the pot amount for that option
+ - rank based on the player bet
+ - present the number of players betting in that option
+ - present the total amount price in the winning bet ranking
+ - present the amount lost in each one of the losing bet ranking
+ - should present for each one of the players an image,user level, user name and the bet value
+ - should present the winner table highlited
+
+- Daily Roulette Race
+ - For the first three players in the ranking should be show medals before the position of the players
+ - The three first players should be present in distack(postion, user name and prize)
+ - should present the time remaining for that daily roulete Race
+ - should present a popup with race rules
+ - should be possible to navigate between pages when logged in
+
