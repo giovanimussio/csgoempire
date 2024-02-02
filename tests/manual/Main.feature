@@ -1,3 +1,19 @@
+
+        /* When we talk about test gambling and igaming aplications, the most important think to do is validate all the money/coins transactions and validate the application math.
+        Based on that i try to cover all the features related with those points. So I try to focus in the Bets, withdraw, deposit, round payments and other related things.
+        Not desconsidarating the other things related as animations and user experience.
+        Thinking on the roulette i will focus to test if the client side are respecting what the server side are sending to him.
+        During the roulette spinning i will focus if is presented all the possible icons, a red marker it's presented, it's not possible to make any bet. In the end, the roulette should stop in the correct icon,
+        highlith the winners table, add the winner icon in the previous roll carousel, update the last 100 items and highlith the winning bet. In the end the winner bet table should present how much was payed and the other ones how much was lost
+
+        Something important to validade it's the way the roulete spin(left-right or right-left), because some places have especific roles for that.
+
+        After the roulette stops should present the Rolling test with timeout, should be posible to make a bet(respecting what you have in the wallet), after you make a bet you need to see you user in the correct table.
+        The tables should me sort respecting the bet value, putting the higher bets in the first positions.
+        */
+
+
+
     Scenario: Update the user wallet when a bet was made
         Given the User is logged in
         When the User makes a bet
