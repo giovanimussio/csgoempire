@@ -42,11 +42,23 @@ export class BetOptions {
     const betButtonSize = betsButtonChoiceRound.length;
     await expect(betButtonSize).toBe(3);
   }
+
   async betButtonChoiceRouletteRollingState() {
     const betsButtonChoiceState = await this.page.$$(
       '[class*="bet-btn-holder"]'
     );
     const betButtonSize = betsButtonChoiceState.length;
     await expect(betButtonSize).toBe(3);
+  }
+  async chooseBet(betOption) {
+    const betChoosedOption = new RegExp(`^${betOption}`);
+    await this.betButtonChoiceRouletteRollingState();
+    // await this.page.locator('[class="bet-btn"]').click();
+    await this.page
+      .getByRole("button", {
+        name: betChoosedOption,
+        exact: true,
+      })
+      .click();
   }
 }

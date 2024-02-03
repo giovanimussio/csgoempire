@@ -13,15 +13,13 @@ test("Should present all sections in the main page ", async ({ page }) => {
   await page.roulette.rouletteSectionIsVisible();
   await page.betOptions.betSectionIsVisible();
   await page.betOptions.betButtonChoiceIsVisible();
-
   await page.roulette.withdrawButtonIsVisible();
   await page.roulette.depositButtonIsVisible();
+  await page.roulette.signInButtonIsVisible();
   await page.betsRound.betsRoundIsVisible();
   await page.betsRound.previousRollsIsVisible();
-  //previous rolls
-  //daily roulette race
-  //signin button
-  //chat
+  await page.roulette.dailyRouletteRaceIsVisible();
+  await page.roulette.chatIsOpen();
 });
 
 test("Should open the Withdraw page ", async ({ page }) => {
@@ -29,4 +27,12 @@ test("Should open the Withdraw page ", async ({ page }) => {
   await page.roulette.rouletteSectionIsVisible();
   await page.roulette.clickOnButton("Withdraw");
   await page.withdraw.withdrawPageIsVisible();
+});
+
+test("Should open the Signin modal when the user clicks on the bet options ", async ({
+  page,
+}) => {
+  await page.roulette.visitRoulette();
+  await page.betOptions.chooseBet("ct");
+  await page.signinModal.signinModalIsVisible();
 });

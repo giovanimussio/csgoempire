@@ -33,7 +33,10 @@ export class Roulette {
   }
 
   async depositButtonIsVisible() {
-    await this.page.locator('[class="w-1/2"]').isVisible;
+    await this.page.locator('[class="w-1/2"]').isVisible();
+  }
+  async signInButtonIsVisible() {
+    await this.page.locator('[class="user-action absolute"]').isVisible();
   }
 
   async rouletteIsRunning(timeoutStatus) {
@@ -50,5 +53,12 @@ export class Roulette {
       await this.page.locator(timeoutLocator).isVisible();
       await this.timeoutHasProperlyText("0.0");
     }
+  }
+
+  async dailyRouletteRaceIsVisible() {
+    await this.page.locator('[class="mb-lg px-lg -mx-lg mt-xxl"]').isVisible();
+  }
+  async chatIsOpen() {
+    await this.page.locator('[class*="chat--open"]').isVisible();
   }
 }

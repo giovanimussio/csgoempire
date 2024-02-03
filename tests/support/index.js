@@ -4,6 +4,7 @@ const { BetOptions } = require("./actions/BetOptions");
 const { Roulette } = require("./actions/Roulette");
 const { BetsRound } = require("./actions/BetsRound");
 const { Withdraw } = require("./actions/Withdraw");
+const { SigninModal } = require("./actions/SigninModal");
 
 const test = base.extend({
   page: async ({ page }, use) => {
@@ -13,6 +14,7 @@ const test = base.extend({
     context["roulette"] = new Roulette(page);
     context["betsRound"] = new BetsRound(page);
     context["withdraw"] = new Withdraw(page);
+    context["signinModal"] = new SigninModal(page);
 
     await use(context);
   },
