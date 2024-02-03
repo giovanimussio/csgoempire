@@ -6,32 +6,20 @@ export class BetOptions {
   }
 
   async betSectionIsVisible() {
-    await this.page.goto("https://csgoempire.com/roulette");
-    await this.page.waitForLoadState("networkidle");
-    await this.page.locator('[class*="wheel relative"]').isVisible();
+    await this.betInputFieldIsVisible();
+    await this.betButtonIsVisible("CLEAR");
+    await this.betButtonIsVisible("+ 0.01");
+    await this.betButtonIsVisible("+ 0.1");
+    await this.betButtonIsVisible("+ 1");
+    await this.betButtonIsVisible("+ 10");
+    await this.betButtonIsVisible("+ 100");
+    await this.betButtonIsVisible(" 1/2");
+    await this.betButtonIsVisible("x 2");
+    await this.betButtonIsVisible("Max");
   }
 
   async betInputFieldIsVisible() {
     await this.page.getByPlaceholder("Enter bet amount...").isVisible();
-  }
-  async allBetButtonsAreVisible() {
-    const betValues = [
-      "CLEAR",
-      "+ 0.01",
-      "+ 0.1",
-      "+ 1",
-      "+ 10",
-      "+ 100",
-      "+ 1/2",
-      "x 2",
-    ];
-    async function processBetValues() {
-      for (const betValue of betValues) {
-        await betButtonIsVisible(betValue);
-      }
-    }
-
-    processBetValues();
   }
 
   async betButtonIsVisible(betValue) {
@@ -46,7 +34,19 @@ export class BetOptions {
       .getByRole("button", { name: betValue, exact: true })
       .click();
   }
-  async totalBetIs() {
-    await this.page.locator();
+
+  async betButtonChoiceIsVisible() {
+    const betsButtonChoiceRound = await this.page.$$(
+      '[class*="bet-btn-holder"]'
+    );
+    const betButtonSize = betsButtonChoiceRound.length;
+    await expect(betButtonSize).toBe(3);
+  }
+  async betButtonChoiceRouletteRollingState() {
+    const betsButtonChoiceState = await this.page.$$(
+      '[class*="bet-btn-holder"]'
+    );
+    const betButtonSize = betsButtonChoiceState.length;
+    await expect(betButtonSize).toBe(3);
   }
 }

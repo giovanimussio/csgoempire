@@ -1,8 +1,6 @@
 const { test, expect } = require("@playwright/test");
 
 const betsContainerLineLocator = '[class*="bets-container__inner"]';
-const betsTotalLocator = ">div>div>img";
-const betsAmoutLocator = "";
 
 export class BetsRound {
   constructor(page) {
@@ -10,17 +8,20 @@ export class BetsRound {
   }
 
   async betsRoundIsVisible() {
-    await this.page.goto("https://csgoempire.com/roulette");
-    await this.page.waitForLoadState("networkidle");
-    await this.page.locator(betsContainerLineLocator).isVisible();
+    const betsRound = await this.page.$$(betsContainerLineLocator);
+    const betsRoundSize = betsRound.length;
+    console.log(betsRoundSize);
+    await expect(betsRoundSize).toBe(3);
   }
-  async totalBetsByBet() {
-    const totalBetsLocator = await this.page
-      .locator(betsContainerLineLocator + betsTotalLocator)
-      .getByAltText("ct", { exact: true })
-      .nth(1);
-    const text = await totalBetsLocator.innerText();
+  async betsRoundStateWhenRouletteIsRunning() {
+    const betsRoundState = await this.page.$$(
+      '[class*="bets-container-rolling"]'
+    );
+    const betRoundSize = betsRoundState.length;
+    await expect(betRoundSize).toBe(0);
+  }
 
-    console.log(text);
+  async previousRollsIsVisible() {
+    await this.page.getByText("Previous Rolls").first().isVisible();
   }
 }

@@ -1,6 +1,7 @@
 const { test } = require("../support");
 
 test("Should present all bets components ", async ({ page }) => {
+  await page.roulette.visitRoulette();
   await page.betOptions.betSectionIsVisible();
   await page.betOptions.betInputFieldIsVisible();
   await page.betOptions.betButtonIsVisible("CLEAR");

@@ -8,10 +8,12 @@ export class Roulette {
   constructor(page) {
     this.page = page;
   }
-
-  async rouletteSectionIsVisible() {
+  async visitRoulette() {
     await this.page.goto("https://csgoempire.com/roulette");
     await this.page.waitForLoadState("networkidle");
+  }
+
+  async rouletteSectionIsVisible() {
     await this.page.locator('[class*="wheel relative"]').isVisible();
   }
   async redMarkerIsVisible() {
@@ -21,6 +23,19 @@ export class Roulette {
     const timeout = this.page.locator(timeoutLocator);
     await expect(timeout).toHaveText(expectedText);
   }
+
+  async clickOnButton(buttonName) {
+    await this.page.getByText(buttonName).first().click();
+  }
+
+  async withdrawButtonIsVisible() {
+    await this.page.locator('[class="mr-md w-1/2"]').isVisible();
+  }
+
+  async depositButtonIsVisible() {
+    await this.page.locator('[class="w-1/2"]').isVisible;
+  }
+
   async rouletteIsRunning(timeoutStatus) {
     const rollingText = this.page.locator(rollingTextLocator);
     if (timeoutStatus) {
@@ -30,7 +45,7 @@ export class Roulette {
       await expect(rollingText).toHaveText("Rolling");
       await this.timeoutHasProperlyText(/^(?!0\.00$)\d+(\.\d{1,2})?$/);
     } else {
-      await !this.page.locator(redMarkerLocator).isVisible();
+      await this.page.locator(redMarkerLocator).isVisible();
       await this.page.locator(rollingTextLocator).isVisible();
       await this.page.locator(timeoutLocator).isVisible();
       await this.timeoutHasProperlyText("0.0");

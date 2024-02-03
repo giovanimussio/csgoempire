@@ -4,12 +4,12 @@ export class Withdraw {
   constructor(page) {
     this.page = page;
   }
-
-  async withdrawPageIsVisible() {
-    const pageH2Title = this.page.locator('[class="text-light-1"]');
-
+  async visitWithdrawPage() {
     await this.page.goto("https://csgoempire.com/withdraw");
     await this.page.waitForLoadState("networkidle");
+  }
+  async withdrawPageIsVisible() {
+    const pageH2Title = this.page.locator('[class="text-light-1"]');
     await expect(pageH2Title).toHaveText("Withdraw");
   }
 
