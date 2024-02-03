@@ -10,6 +10,8 @@
 
         After the roulette stops should present the Rolling test with timeout, should be posible to make a bet(respecting what you have in the wallet), after you make a bet you need to see you user in the correct table.
         The tables should me sort respecting the bet value, putting the higher bets in the first positions.
+
+        The viewpoint tests should be executed too because changing the viewpoints the app should respect the resolution.
         */
 
 
